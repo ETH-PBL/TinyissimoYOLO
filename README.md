@@ -1,4 +1,4 @@
-#  👀 Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO   👀 
+#  👓 Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO   👓 
 
 ### [💻 Blog by Jack Clark](https://jack-clark.net/) |[📜 Paper](https://arxiv.org/pdf/2311.01057.pdf)
 
