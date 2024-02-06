@@ -1,6 +1,6 @@
 #  👀 Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO   👀 
 
-### [💻 Blog Post](https://jack-clark.net/) |[📜 Paper](https://arxiv.org/pdf/2311.01057.pdf) | [🗂️ Data](https://pietrobonazzi.com/projects/retina)
+### [💻 Blog by Jack Clark](https://jack-clark.net/) |[📜 Paper](https://arxiv.org/pdf/2311.01057.pdf)
 
 [Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO](https://arxiv.org/abs/2311.01057)  
  Julian Moosmann* <sup>1</sup>,
