@@ -46,6 +46,6 @@ pip install -r requirements.txt
 
 
 ```
-python b_train_export.py
+python a_train_export.py
 ```
 
