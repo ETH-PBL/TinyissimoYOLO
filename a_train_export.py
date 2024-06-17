@@ -9,7 +9,7 @@ img_size = 256
 input_size = (1, 1, img_size, img_size)  
  
 # Train
-model.train(data="RATS.yaml",  project="results", name="exp", optimizer='SGD',  imgsz=img_size,  epochs=100,  batch=64)
+model.train(data="VOC.yaml",  project="results", name="exp", optimizer='SGD',  imgsz=img_size,  epochs=1,  batch=64)
 
 # Export
 model.export(format="onnx", project="results", name="exp", imgsz=[img_size,img_size]) 
