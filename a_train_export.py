@@ -21,7 +21,7 @@ else:
     model_name = f"./ultralytics/cfg/models/tinyissimo/tinyissimo-{version}.yaml"
     model = YOLO(model_name) 
 
-img_size = 224
+img_size = 256
 input_size = (1, 1, img_size, img_size)  
  
 # Train
