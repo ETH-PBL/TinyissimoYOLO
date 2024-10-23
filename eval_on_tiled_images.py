@@ -9,7 +9,6 @@ import argparse
 import torchvision.ops as ops
 
 from ultralytics import YOLO
-from ultralytics.nn.tasks import get_size
 from ultralytics.utils.offline_tiling import Tiler
 from ultralytics import YOLO
 from tqdm import tqdm
@@ -174,7 +173,7 @@ if __name__ == "__main__":
     original_image_dir = data_dir + dataset_yaml['original_images'][image_set]
     original_labels_dir = data_dir + dataset_yaml['original_images'][image_set].replace('images', 'labels')
 
-    model = YOLO('runs/detect/train782/weights/best.pt')
+    model = YOLO('path/to/your/model.pt')
     
 
     full_count_mae = []

@@ -1,7 +1,7 @@
 
 from ultralytics import YOLO
 
-from ultralytics.nn.tasks import get_size
+# from ultralytics.nn.tasks import get_size
 from ultralytics.utils.offline_tiling import Tiler
 
 import wandb
@@ -18,7 +18,7 @@ tiler = Tiler('tiling_config.yaml')
 tiler.get_split_dataset()
 
 # Load a model
-model = YOLO('tinyissimoyolo.yaml')
+model = YOLO('tinyissimo-v1-small.yaml')
 
 # Train the model
 model.train(data='CARPK_tiling.yaml',
@@ -26,9 +26,6 @@ model.train(data='CARPK_tiling.yaml',
             epochs=1, 
             batch=64,
             single_cls=True)
-
-# Size
-get_size(model.model.model)
 
 # Count the number of layers
 num_layers = sum(1 for _ in model.model.model.modules()) - 1
