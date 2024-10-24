@@ -1,10 +1,13 @@
-#  👓 Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO   👓 
+This repository hosts the code for TinyissimoYOLO and DSORT-MCU as presented in [Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO](https://arxiv.org/abs/2311.01057) and [DSORT-MCU: Detecting Small Objects in Real Time on MCUs](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10600127).
 
-### [💻 Blog by Jack Clark](https://jack-clark.net/) |[📜 Paper](https://arxiv.org/pdf/2311.01057.pdf)
+
+
+## [👓 Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO](tinyissimoYOLO_README.md)
+
 
 [Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO](https://arxiv.org/abs/2311.01057)  
  Julian Moosmann* <sup>1</sup>,
- [🧑🏻‍🚀 Pietro Bonazzi*](https://linkedin.com/in/pietrobonazzi)<sup>1</sup>,
+ Pietro Bonazzi*<sup>1</sup>,
  Yawei Li<sup>1</sup>, 
  Sizhen Bian <sup>1</sup>, 
  Philipp Mayer<sup>1</sup> ,
@@ -13,39 +16,26 @@
 
 <sup>1</sup> ETH Zurich, Switzerland  <br>  
 
-## ✉️ Citation ❤️
 
-Our codebase is based on [Ultralytics](https://github.com/ultralytics/ultralytics). If you find our work useful please use this citation :
-```
-@misc{moosmann2023ultraefficient,
-      title={Ultra-Efficient On-Device Object Detection on AI-Integrated Smart Glasses with TinyissimoYOLO}, 
-      author={Julian Moosmann* and Pietro Bonazzi* and Yawei Li and Sizhen Bian and Philipp Mayer and Luca Benini and Michele Magno},
-      year={2023},
-      eprint={2311.01057},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-```
-## 🚀 TL;DR quickstart 🚀
+## Guide
+
+For more details on how to train TinyissimoYOLO models, follow [this guide](tinyissimoYOLO_README.md).
 
 
-### Create the environment
+## [DSORT-MCU: Detecting Small Objects in Real Time on MCUs](dsort_README.md)
 
-Create the environment:
+DSORT-MCU is a framework for training and running models with improved detection performance on small objects that does not increase memory footprint and thus enables detection on resource constrained platforms.
 
-```
-python3.10 -m venv venv
-source venv/bin/activate
-pip install torch==2.0.0+cu117 torchvision==0.15.1+cu117 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu117 
-pip install -r requirements.txt 
-```
+[DSORT-MCU: Detecting Small Objects in Real Time on MCUs](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10600127)
 
+ Liam Boyle <sup>1</sup>,
+ Julian Moosmann<sup>1</sup>,
+ Nicolas Baumann <sup>1</sup>, 
+ Seonyeong Heo<sup>2</sup> ,
+ Michele Magno<sup>1</sup>  <br>
 
+<sup>1</sup> ETH Zurich, Switzerland  
+<sup>2</sup> Kyung Hee University, Republic of Korea <br> 
 
-## Training & Evaluation
-
-
-```
-python a_train_export.py
-```
-
+## Guide
+For a guide on how to train models with the adaptive tiling presented in DSORT-MCU follow [these instructions](dsort_README.md).
