@@ -33,7 +33,6 @@ def load_test_images(dir):
     images = {}
     for filename in os.listdir(dir):
         if filename.endswith(".jpg") or filename.endswith(".png"):            
-            # images.append(os.path.join(dir, filename.split('/')[-1]))
             images[filename] = [os.path.join(dir, filename)]
     # Sort the list for each image
     for image in images.keys():
@@ -58,12 +57,10 @@ def compute_metrics(gt, pred_boxes, pred_conf, og_image, conf_thresh=0.6,
         x2 = xc + w/2
         y2 = yc + h/2
         gt_boxes[i] = torch.tensor([x1, y1, x2, y2])
-        # gt_boxes_list.append(gt_box)
 
     iou = ops.box_iou(gt_boxes, pred)
     gt_has_match = iou.amax(dim=1) > iou_thresh
     pred_has_match = iou.amax(dim=0) > iou_thresh
-
     tp = pred_has_match.sum()
     fp = (~pred_has_match).sum()
     fn = (~gt_has_match).sum()
@@ -113,7 +110,6 @@ def plot_results(stitched_preds, filtered_boxes, filtered_conf, og_image,
                       (tile['x_max'], tile['y_max']), color, 2)
 
         for instance in instances:
-            # if instance['conf'] > conf_thresh:
             x1, y1, x2, y2 = instance['bbox']
             x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
             cv2.rectangle(og_image, (x1, y1), (x2, y2), color, 2)
@@ -171,7 +167,7 @@ if __name__ == "__main__":
         test_images = load_test_images(data_dir + dataset_yaml['original_images'][image_set])
     
     original_image_dir = data_dir + dataset_yaml['original_images'][image_set]
-    original_labels_dir = data_dir + dataset_yaml['original_images'][image_set].replace('images', 'labels')
+    original_labels_dir = data_dir + dataset_yaml['original_images'][image_set].replace('images', 'annotations')
 
     model = YOLO('path/to/your/model.pt')
     
@@ -182,7 +178,6 @@ if __name__ == "__main__":
     full_f1 = []
 
     for image in tqdm(test_images, position=0, leave=True):
-        # print(f"Processing {image}")
         og_image = cv2.imread(os.path.join(original_image_dir, image))
         og_labels_path = os.path.join(original_labels_dir, image.replace('png', 'txt'))
         with open(os.path.join(og_labels_path), 'r') as f:
@@ -193,7 +188,7 @@ if __name__ == "__main__":
                 instances_float.append([float(coord) for coord in instance])
 
         gt_object_count = len(instances_float)
-        result = model(test_images[image], stream=True)
+        result = model(test_images[image], stream=True, verbose=False)
 
         if use_tiling:
             stitched_preds, filtered_boxes, filtered_conf \

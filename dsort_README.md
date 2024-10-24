@@ -13,9 +13,10 @@ Pip install the ultralytics package including all [requirements](https://github.
 ```bash
 pip install ultralytics
 pip install wandb
+pip install opencv-python
 ```
 
-For alternative installation methods including Conda, Docker, and Git, please refer to the [Quickstart Guide](https://docs.ultralytics.com/quickstart).
+For alternative installation methods including Conda, Docker, and Git, please refer to the [Quickstart Guide](https://github.com/ultralytics/ultralytics/blob/main/pyproject.toml).
 
 
 
@@ -28,7 +29,6 @@ TinysissimoYOLOv1.3 detection models trained with different target NBA values fo
 | [TinysissimoYOLO_0.02](https://github.com/mojulian/ultralytics/releases/download/0.1/TinyissimoYOLO_nba_0_02.pt) | 2                  | 10.1       | 256               | 92                        | 62.5                         | 21.2 |
 | [TinysissimoYOLO_0.04](https://github.com/mojulian/ultralytics/releases/download/0.1/TinyissimoYOLO_nba_0_04.pt) | 4                  | 21.6       | 256               | 93                        | 67.5                         | 6.2  |
 | [TinysissimoYOLO_0.06](https://github.com/mojulian/ultralytics/releases/download/0.1/TinyissimoYOLO_nba_0_06.pt) | 6                  | 27.8       | 256               | 90                        | 64.0                         | 6.5  |
-| [TinysissimoYOLO_0.08](https://github.com/mojulian/ultralytics/releases/download/0.1/TinyissimoYOLO_nba_0_08.pt) | 8                  | 31.3       | 256               | 89                        | 62.5                         | 7.4  |
 
 - **mAP<sup>test</sup>** values are for single-model on [CARPK](https://lafi.github.io/LPN/) dataset.
   <br>Image splits for [train](https://github.com/mojulian/ultralytics/releases/download/0.1/train_images.txt), [val](https://github.com/mojulian/ultralytics/releases/download/0.1/val_images.txt) and [test](https://github.com/mojulian/ultralytics/releases/download/0.1/test.txt) splits are defined in the corresponding links.
@@ -37,13 +37,19 @@ TinysissimoYOLOv1.3 detection models trained with different target NBA values fo
 
 ## <div align="center">Train Models</div>
 
-Adjust the paths and parameters of the tiling algorithm to your liking in the [tiling config](tiling_config.yaml).
+Adjust the paths and parameters of the tiling algorithm to your liking in the [tiling config](tiling_config.yaml) and make sure to set the mode to `train`. Setting the mode to `train` keeps some of the tiles with no objects in the training such that the model can learn to "not" predict objects when there aren't any in the image.
 To start training just call the training [script](train_julian.py):
 
 ```bash
 python train_with_tiling.py
 ```
+This script automatically downloads the train, val, test split info used to train our models.
 
+### Train models on CARPK dataset
+Download the CARPK dataset from [here](https://lafi.github.io/LPN/). To convert the annotations to the correct format we provide a conversion script:
+```
+python convert_CARPK_to_YOLO.py
+```
 ## <div align="center">Evaluate Models</div>
 
 Models can be evaluated by calling
@@ -51,9 +57,9 @@ Models can be evaluated by calling
 python eval_on_tiled_images.py --plot=False --image-set='test'
 ```
 
-Setting the `plot` flag to true when calling [eval_on_tiled_images.py](eval_on_tiled_images.py) will plot the predictions as shown in the axample below:
+When evaluating models make sure to set the mode in [tiling_config.yaml](tiling_config.yaml) to `test` such that all empty tiles are also processed and the tiles are correctly stitched together in the end. Setting the `plot` flag to true when calling [eval_on_tiled_images.py](eval_on_tiled_images.py) will plot the predictions as shown in the axample below:
 
-<img width="1024" src="pics/tinyYOLO_prediction.png">
+<img width="1024" src="pics/plotting_example.png">
 
 - **Green bboxes**: True positive predictions made by the network
 - **Red bboxes**: False positive predictions made by the network

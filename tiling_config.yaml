@@ -1,8 +1,8 @@
-target_nba: 0.018
+target_nba: 0.02
 network_input_size: 256
 dataset_yaml: ultralytics/cfg/datasets/CARPK_tiling.yaml
-data_dir: ../datasets
-mode: train
+data_dir: ../../datasets
+mode: test
 keep_empty_tiles: True
 filter_iou_threshold: 0.7
 filter_intersection_ratio_threshold: 0.7

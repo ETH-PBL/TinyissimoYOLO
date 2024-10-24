@@ -127,7 +127,7 @@ class Tiler:
         :param path: Path to the labels
         :return: labels: List of dictionaries containing the labels
         """
-        labels_path = self.dataset_dir + '/' + path.split('/')[0] + '/labels'
+        labels_path = self.dataset_dir + '/' + path.split('/')[0] + '/annotations'
         labels = []
         for filename in os.listdir(labels_path):
             with open(os.path.join(labels_path, filename), 'r') as f:

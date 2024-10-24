@@ -4,7 +4,7 @@ original_images:
   test: CARPK_test/images
   train: CARPK_train/images
   val: CARPK_val/images
-path: ../datasets/CARPK
-test: test_tiles_target_nba_0.018_input_size_256_mode_train/images
-train: train_tiles_target_nba_0.018_input_size_256_mode_train/images
-val: val_tiles_target_nba_0.018_input_size_256_mode_train/images
+path: ../../datasets/CARPK
+test: test_tiles_target_nba_0.02_input_size_256_mode_test/images
+train: train_tiles_target_nba_0.02_input_size_256_mode_test/images
+val: val_tiles_target_nba_0.02_input_size_256_mode_test/images
